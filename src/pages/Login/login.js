@@ -3,10 +3,13 @@ import ImageComponent from './ImageComponent/ImageComponent'
 import Logo from './Logo/Logo';
 import CustomInput from './CustomInput/CustomInput'
 import { useState } from 'react';
+import CustomButton from './CustomButton/CustomButton';
+
 export default function Login() {
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const isInvalid = password === '' || emailAddress === '';
   const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -17,6 +20,11 @@ export default function Login() {
       setPassword('');
       setError(error.message);
     }
+  };
+  const buttonProps = {
+    disabled: isInvalid,
+    type: 'submit',
+    styleButton: `bg-blue-medium text-white w-full rounded h-8 font-bold ${isInvalid && 'opacity-50'}`,
   };
   return (
     <div className="container flex mx-auto max-w-screen-md items-center h-screen">
@@ -44,6 +52,7 @@ export default function Login() {
               onChange={({ target }) => setPassword(target.value)}
               value={password}
             />
+            <CustomButton {...buttonProps}>Login</CustomButton>
           </form>
         </div>
         </div>
