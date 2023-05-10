@@ -1,41 +1,58 @@
-import Loader from '../../Components/Loader/Loader';
-import ImageComponent from './ImageComponent/ImageComponent'
-import Logo from './Logo/Logo';
-import CustomInput from './CustomInput/CustomInput'
-import { useState } from 'react';
-import CustomButton from './CustomButton/CustomButton';
-
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import * as ROUTES from "../../constants/routes";
+import Loader from "../../Components/Loader/Loader";
+import ImageComponent from "./ImageComponent/ImageComponent";
+import Logo from "./Logo/Logo";
+import Paragraph from "./Paragraph/Paragraph";
+import CustomInput from "./CustomInput/CustomInput";
+import CustomButton from "./CustomButton/CustomButton";
 export default function Login() {
-  const [emailAddress, setEmailAddress] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const isInvalid = password === '' || emailAddress === '';
+  const navigate = useNavigate();
+  const [emailAddress, setEmailAddress] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const isInvalid = password === "" || emailAddress === "";
   const handleLogin = async (event) => {
     event.preventDefault();
 
     try {
-      
+      navigate(ROUTES.DASHBOARD);
     } catch (error) {
-      setEmailAddress('');
-      setPassword('');
+      setEmailAddress("");
+      setPassword("");
       setError(error.message);
     }
   };
   const buttonProps = {
     disabled: isInvalid,
-    type: 'submit',
-    styleButton: `bg-blue-medium text-white w-full rounded h-8 font-bold ${isInvalid && 'opacity-50'}`,
+    type: "submit",
+    styleButton: `bg-blue-medium text-white w-full rounded h-8 font-bold ${
+      isInvalid && "opacity-50"
+    }`,
+  };
+  const signUpLinkProps = {
+    to: "/",
+    className: "font-bold text-blue-medium",
   };
   return (
     <div className="container flex mx-auto max-w-screen-md items-center h-screen">
-       <Loader fadeOutInterval={5000}/>
-       <ImageComponent src="/images/iphone-with-profile.jpg"  alt="iPhone with Instagram app" styleImg='flex w-3/5' />
-       <div className="flex flex-col w-2/5">
+      <Loader fadeOutInterval={5000} />
+      <ImageComponent
+        src="/images/iphone-with-profile.jpg"
+        alt="iPhone with Instagram app"
+        styleImg="flex w-3/5"
+      />
+      <div className="flex flex-col w-2/5">
         <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
-          
-        <Logo src="/images/logo.png" alt="Instagram" style1="flex justify-center w-full"  style2="mt-2 w-6/12 mb-4" />
-        {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
-        <form onSubmit={handleLogin} method="POST">
+          <Logo
+            src="/images/logo.png"
+            alt="Instagram"
+            style1="flex justify-center w-full"
+            style2="mt-2 w-6/12 mb-4"
+          />
+          {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
+          <form onSubmit={handleLogin} method="POST">
             <CustomInput
               aria-label="Enter your email address"
               type="text"
@@ -48,14 +65,22 @@ export default function Login() {
               aria-label="Enter your password"
               type="password"
               placeholder="Password"
-              styleInput ="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2"
+              styleInput="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2"
               onChange={({ target }) => setPassword(target.value)}
               value={password}
             />
             <CustomButton {...buttonProps}>Login</CustomButton>
           </form>
         </div>
+        <div className="flex justify-center items-center flex-col w-full bg-white p-4 rounded border border-gray-primary">
+          <Paragraph
+            textParagraph="Don't have an account?"
+            textLink="Sign up"
+            styleParagraph="text-sm"
+            signUpLinkProps={signUpLinkProps}
+          />
         </div>
+      </div>
     </div>
   );
 }
