@@ -31,7 +31,7 @@ export default function Login() {
       isInvalid && "opacity-50"
     }`,
   };
-  const signUpLinkProps = {
+  const linkProps = {
     to: "/",
     className: "font-bold text-blue-medium",
   };
@@ -74,10 +74,10 @@ export default function Login() {
         </div>
         <div className="flex justify-center items-center flex-col w-full bg-white p-4 rounded border border-gray-primary">
           <Paragraph
-            textParagraph="Don't have an account?"
-            textLink="Sign up"
-            styleParagraph="text-sm"
-            signUpLinkProps={signUpLinkProps}
+            text="Don't have an account?"
+            linkText="Sign up"
+            textStyle="text-sm"
+            linkProps={linkProps}
           />
         </div>
       </div>

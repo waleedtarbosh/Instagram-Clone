@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Paragraph = ({ textParagraph, textLink, styleParagraph, signUpLinkProps }) => {
-  const concatenatedText = `${textParagraph} ${' '}`;
+const Paragraph = ({ text, linkText, textStyle, linkProps }) => {
+  const concatenatedText = `${text} ${' '}`;
 
   return (
-    <p className={styleParagraph}>
+    <p className={textStyle}>
       {concatenatedText}
-      <Link {...signUpLinkProps}>
-        {textLink}
+      <Link {...linkProps}>
+        {linkText}
       </Link>
     </p>
   );
