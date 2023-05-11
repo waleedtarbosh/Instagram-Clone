@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ImageComponent = ({ src, alt , styleImg}) => {
+const Image = ({ src, alt , styleImg}) => {
   return (
     <div  className={`${styleImg}`}>
       <img src={src} alt={alt} />
@@ -8,4 +8,4 @@ const ImageComponent = ({ src, alt , styleImg}) => {
   );
 };
 
-export default ImageComponent;
+export default Image;
