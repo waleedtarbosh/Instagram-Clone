@@ -8,7 +8,7 @@ export default function Login() {
       <Image
         src="/images/iphone-with-profile.jpg"
         alt="iPhone with Instagram app"
-        styleImg="flex w-3/5"
+        imageWrapperStyle="flex w-3/5"
       />
       <div className="flex flex-col w-2/5">
         <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
@@ -16,7 +16,7 @@ export default function Login() {
             <Image
               src="/images/logo.png"
               alt="Instagram"
-              styleImg="mt-2 w-6/12 mb-4"
+              imageWrapperStyle="mt-2 w-6/12 mb-4"
             />
           </h1>
         </div>

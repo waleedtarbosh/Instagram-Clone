@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Image = ({ src, alt , styleImg}) => {
+const Image = ({ src, alt , imageWrapperStyle}) => {
   return (
-    <div  className={`${styleImg}`}>
+    <div  className={`${imageWrapperStyle}`}>
       <img src={src} alt={alt} />
     </div>
   );
