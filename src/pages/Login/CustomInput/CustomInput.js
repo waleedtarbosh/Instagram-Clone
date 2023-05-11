@@ -1,6 +1,13 @@
-import React from 'react';
+import React from "react";
 
-const CustomInput = ({ ariaLabel, type, placeholder, styleInput, onChange, value }) => {
+const CustomInput = ({
+  ariaLabel,
+  type,
+  placeholder,
+  styleInput,
+  onChange,
+  value,
+}) => {
   return (
     <input
       aria-label={ariaLabel}
