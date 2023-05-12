@@ -2,13 +2,13 @@ import Loader from "../../Components/Loader/Loader";
 import CustomInput from "./CustomInput/CustomInput";
 import { useState } from "react";
 import Image from "./Image/Image";
-
+import CustomButton from './CustomButton/CustomButton';
 
 export default function Login() {
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+  const isInvalid = password === '' || emailAddress === '';
   const inputFields = [
     {
       id: "email",
