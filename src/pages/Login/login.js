@@ -3,12 +3,14 @@ import CustomInput from "./CustomInput/CustomInput";
 import { useState } from "react";
 import Image from "./Image/Image";
 import CustomButton from './CustomButton/CustomButton';
+import CustomInput from "./CustomInput/CustomInput";
 
 export default function Login() {
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const isInvalid = password === '' || emailAddress === '';
+  
   const inputFields = [
     {
       id: "email",
@@ -28,7 +30,6 @@ export default function Login() {
     }
   ];
 
-
   const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -43,6 +44,14 @@ export default function Login() {
 
   const buttonProps = {
     disabled: isInvalid,
+    type: "submit",
+    styleButton: `bg-blue-medium text-white w-full rounded h-8 font-bold ${
+      isInvalid && "opacity-50"
+    }`,
+  };
+  const linkProps = {
+    to: "/",
+    className: "font-bold text-blue-medium",
     type: 'submit',
     styleButton: `bg-blue-medium text-white w-full rounded h-8 font-bold ${isInvalid && 'opacity-50'}`,
     content:'Login',
@@ -81,6 +90,14 @@ export default function Login() {
             ))}
               <CustomButton {...buttonProps}></CustomButton>
           </form>
+        </div>
+        <div className="flex justify-center items-center flex-col w-full bg-white p-4 rounded border border-gray-primary">
+          <Paragraph
+            text="Don't have an account?"
+            linkText="Sign up"
+            textStyle="text-sm"
+            linkProps={linkProps}
+          />
         </div>
       </div>
     </div>
