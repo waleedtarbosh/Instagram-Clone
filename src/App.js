@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy } from "react";
-import { LOGIN } from "./constants/routes"; // Import LOGIN directly
+import { LOGIN } from "./constants/routes"; 
 const Login = lazy(() => import("./pages/Login/login"));
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path={LOGIN} element={<Login />} /> {/* Use LOGIN directly */}
+          <Route path={LOGIN} element={<Login />} />
         </Routes>
       </BrowserRouter>
     </div>
