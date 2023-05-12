@@ -1,5 +1,4 @@
 import Loader from "../../Components/Loader/Loader";
-import Logo from "./Logo/Logo";
 import CustomInput from "./CustomInput/CustomInput";
 import { useState } from "react";
 import Image from "./Image/Image";
