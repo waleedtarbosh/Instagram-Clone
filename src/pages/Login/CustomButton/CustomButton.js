@@ -1,13 +1,13 @@
 import React from 'react';
 
-const CustomButton = ({ disabled, type, styleButton, children }) => {
+const CustomButton = ({ disabled, type, styleButton, content }) => {
   return (
     <button
       disabled={disabled}
       type={type}
       className={styleButton}
     >
-      {children}
+      {content}
     </button>
   );
 };

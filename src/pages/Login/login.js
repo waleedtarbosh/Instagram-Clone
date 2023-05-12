@@ -25,6 +25,7 @@ export default function Login() {
     disabled: isInvalid,
     type: 'submit',
     styleButton: `bg-blue-medium text-white w-full rounded h-8 font-bold ${isInvalid && 'opacity-50'}`,
+    content:'Login',
   };
   return (
     <div className="container flex mx-auto max-w-screen-md items-center h-screen">
@@ -52,7 +53,7 @@ export default function Login() {
               onChange={({ target }) => setPassword(target.value)}
               value={password}
             />
-            <CustomButton {...buttonProps}>Login</CustomButton>
+            <CustomButton {...buttonProps}></CustomButton>
           </form>
         </div>
         </div>
