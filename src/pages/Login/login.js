@@ -17,7 +17,7 @@ export default function Login() {
     event.preventDefault();
 
     try {
-      navigate(ROUTES.DASHBOARD);
+     
     } catch (error) {
       setEmailAddress("");
       setPassword("");
