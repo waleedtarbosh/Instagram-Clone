@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import * as ROUTES from "../../constants/routes";
 import Loader from "../../Components/Loader/Loader";
 import ImageComponent from "./ImageComponent/ImageComponent";
 import Logo from "./Logo/Logo";
@@ -8,7 +6,6 @@ import Paragraph from "./Paragraph/Paragraph";
 import CustomInput from "./CustomInput/CustomInput";
 import CustomButton from "./CustomButton/CustomButton";
 export default function Login() {
-  const navigate = useNavigate();
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
