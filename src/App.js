@@ -1,11 +1,17 @@
-import Loader from "./Components/Loader/Loader";
-import "./App.css";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { lazy } from "react";
+import { LOGIN } from "./constants/routes"; // Import LOGIN directly
+const Login = lazy(() => import("./pages/Login/login"));
 
 function App() {
   return (
-    <div className="App">
-      <Loader fadeOutInterval={5000} />
-      <div>hello</div>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path={LOGIN} element={<Login />} /> {/* Use LOGIN directly */}
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
