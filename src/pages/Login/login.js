@@ -28,6 +28,7 @@ export default function Login() {
     }
   ];
 
+
   const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -38,6 +39,13 @@ export default function Login() {
       setPassword("");
       setError(error.message);
     }
+  };
+
+  const buttonProps = {
+    disabled: isInvalid,
+    type: 'submit',
+    styleButton: `bg-blue-medium text-white w-full rounded h-8 font-bold ${isInvalid && 'opacity-50'}`,
+    content:'Login',
   };
 
   return (
@@ -71,6 +79,7 @@ export default function Login() {
                 value={input.value}
               />
             ))}
+              <CustomButton {...buttonProps}></CustomButton>
           </form>
         </div>
       </div>
