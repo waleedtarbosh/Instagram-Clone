@@ -3,7 +3,7 @@ import CustomInput from "./CustomInput/CustomInput";
 import { useState } from "react";
 import Image from "./Image/Image";
 import CustomButton from './CustomButton/CustomButton';
-import CustomInput from "./CustomInput/CustomInput";
+import Paragraph from './Paragraph/Paragraph';
 
 export default function Login() {
   const [emailAddress, setEmailAddress] = useState("");
@@ -48,13 +48,13 @@ export default function Login() {
     styleButton: `bg-blue-medium text-white w-full rounded h-8 font-bold ${
       isInvalid && "opacity-50"
     }`,
+    content:'Login',
   };
   const linkProps = {
     to: "/",
     className: "font-bold text-blue-medium",
     type: 'submit',
     styleButton: `bg-blue-medium text-white w-full rounded h-8 font-bold ${isInvalid && 'opacity-50'}`,
-    content:'Login',
   };
 
   return (
