@@ -1,9 +1,6 @@
+import AuthForm from "../AuthForm/AuthForm";
+import { useState } from "react";
 import Loader from "../../Components/Loader/Loader";
-import CustomInput from "./CustomInput/CustomInput";
-import React, { useState} from "react";
-import Image from "./Image/Image";
-import CustomButton from "./CustomButton/CustomButton";
-import Paragraph from "./Paragraph/Paragraph";
 
 export default function Login() {
   const [emailAddress, setEmailAddress] = useState("");
@@ -65,39 +62,26 @@ export default function Login() {
     }`
   };
 
-  const handleLogin = async (event) => {
-    event.preventDefault();
-
-    try {
-        // Login logic here
-    } catch (error) {
-      setEmailAddress("");
-      setPassword("");
-      setError(error.message);
-    }
+  const handleLogin = async (credentials) => {
+    // login logic here using credentials object
   };
 
   return (
-    <div className="container flex mx-auto max-w-screen-md items-center h-screen">
-      <Loader fadeOutInterval={5000} />
-      <Image {...ImageProps} />
-      <div className="flex flex-col w-2/5">
-        <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
-          <h1 className="flex justify-center w-full">
-            <Image {...LogoProps} />
-          </h1>
-          {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
-          <form onSubmit={handleLogin} method="POST">
-            {inputFields.map((input) => (
-              <CustomInput key={input.id} {...input} />
-            ))}
-            <CustomButton {...buttonProps}></CustomButton>
-          </form>
-        </div>
-        <div className="flex justify-center items-center flex-col w-full bg-white p-4 rounded border border-gray-primary">
-          <Paragraph {...ParagraphProps} linkProps={linkProps} />
-        </div>
-      </div>
-    </div>
+    <>
+    <Loader fadeOutInterval={5000} />
+    <AuthForm
+      formType="Login"
+      handleSubmit={handleLogin}
+      error={error}
+      setError={setError}
+      isInvalid={isInvalid}
+      ImageProps={ImageProps}
+      LogoProps={LogoProps}
+      inputFields={inputFields}
+      buttonProps={buttonProps}
+      ParagraphProps={ParagraphProps}
+      linkProps={linkProps}
+    />
+    </>
   );
 }

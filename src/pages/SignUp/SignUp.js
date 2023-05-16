@@ -1,52 +1,44 @@
-import CustomInput from "../Login/CustomInput/CustomInput";
+import AuthForm from "../AuthForm/AuthForm";
 import { useState } from "react";
-import Image from "../Login/Image/Image";
-import CustomButton from "../Login/CustomButton/CustomButton";
-import Paragraph from "../Login/Paragraph/Paragraph";
 
 export default function SignUp() {
-  const [username, setUsername] = useState('');
-  const [fullName, setFullName] = useState('');
+  const [username, setUsername] = useState("");
+  const [fullName, setFullName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const isInvalid = password === "" || emailAddress === "";
-
   const ImageProps = {
     src: "/images/iphone-with-profile.jpg",
     alt: "iPhone with Instagram app",
-    imageWrapperStyle: "flex w-3/5",
+    imageWrapperStyle: "flex w-3/5"
   };
   const LogoProps = {
     src: "/images/logo.png",
     alt: "Instagram",
-    imageWrapperStyle: "mt-2 w-6/12 mb-4",
+    imageWrapperStyle: "mt-2 w-6/12 mb-4"
   };
   const inputFields = [
-    
     {
-        id: "Username",
-        label:"Enter your username",
-        type: "text",
-        placeholder: "Username",
-        styleInput:
+      id: "username",
+      label: "Username",
+      type: "text",
+      placeholder: "Enter your Username",
+      styleInput:
         "text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2",
-        onChange: (event) => setUsername(event.target.value),
-        value: username,
-
+      value: username,
+      onChange: (event) => setUsername(event.target.value)
     },
-
-    { 
-    id: "FullName",
-    label:"Enter your full name",
-    type: "text",
-    placeholder: "Full name",
-    styleInput:
-    "text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2",
-        onChange: (event) => setFullName(event.target.value),
-        value: fullName,
+    {
+      id: "fullname",
+      label: "Full Name",
+      type: "text",
+      placeholder: "Enter your Full Name",
+      styleInput:
+        "text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2",
+      value: fullName,
+      onChange: (event) => setFullName(event.target.value)
     },
-
     {
       id: "email",
       label: "Email address",
@@ -55,7 +47,7 @@ export default function SignUp() {
       styleInput:
         "text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2",
       value: emailAddress,
-      onChange: (event) => setEmailAddress(event.target.value),
+      onChange: (event) => setEmailAddress(event.target.value)
     },
     {
       id: "password",
@@ -65,9 +57,8 @@ export default function SignUp() {
       styleInput:
         "text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2",
       value: password,
-      onChange: (event) => setPassword(event.target.value),
-    },
-
+      onChange: (event) => setPassword(event.target.value)
+    }
   ];
   const buttonProps = {
     disabled: isInvalid,
@@ -75,12 +66,12 @@ export default function SignUp() {
     styleButton: `bg-blue-medium text-white w-full rounded h-8 font-bold ${
       isInvalid && "opacity-50"
     }`,
-    content: "SignUp",
+    content: "Sign Up"
   };
   const ParagraphProps = {
     text: "Have an account?",
     linkText: "Login",
-    textStyle: "text-sm",
+    textStyle: "text-sm"
   };
   const linkProps = {
     to: "/login",
@@ -88,42 +79,26 @@ export default function SignUp() {
     type: "submit",
     styleButton: `bg-blue-medium text-white w-full rounded h-8 font-bold ${
       isInvalid && "opacity-50"
-    }`,
+    }`
   };
 
-  const handleSignUp = async (event) => {
-    event.preventDefault();
-
-    try {
-      //login logic here
-    } catch (error) {
-        setFullName('');
-        setEmailAddress('');
-        setPassword('');
-        setError(error.message);
-    }
+  const handleSignUp = async (credentials) => {
+    // sign up logic here using credentials object
   };
 
   return (
-    <div className="container flex mx-auto max-w-screen-md items-center h-screen">
-      <Image {...ImageProps} />
-      <div className="flex flex-col w-2/5">
-        <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
-          <h1 className="flex justify-center w-full">
-            <Image {...LogoProps} />
-          </h1>
-          {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
-          <form onSubmit={handleSignUp} method="POST">
-            {inputFields.map((input) => (
-              <CustomInput key={input.id} {...input} />
-            ))}
-            <CustomButton {...buttonProps}></CustomButton>
-          </form>
-        </div>
-        <div className="flex justify-center items-center flex-col w-full bg-white p-4 rounded border border-gray-primary">
-          <Paragraph {...ParagraphProps} linkProps={linkProps} />
-        </div>
-      </div>
-    </div>
+    <AuthForm
+      formType="Sign Up"
+      handleSubmit={handleSignUp}
+      error={error}
+      setError={setError}
+      isInvalid={isInvalid}
+      ImageProps={ImageProps}
+      LogoProps={LogoProps}
+      inputFields={inputFields}
+      buttonProps={buttonProps}
+      ParagraphProps={ParagraphProps}
+      linkProps={linkProps}
+    />
   );
 }
