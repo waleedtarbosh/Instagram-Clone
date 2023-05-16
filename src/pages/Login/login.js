@@ -57,7 +57,7 @@ export default function Login() {
     textStyle: "text-sm",
   };
   const linkProps = {
-    to: "/Signup",
+    to: "/sign-up",
     className: "font-bold text-blue-medium",
     type: "submit",
     styleButton: `bg-blue-medium text-white w-full rounded h-8 font-bold ${
