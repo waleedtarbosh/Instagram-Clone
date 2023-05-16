@@ -1,6 +1,6 @@
 import Loader from "../../Components/Loader/Loader";
 import CustomInput from "./CustomInput/CustomInput";
-import React, { useState} from "react";
+import React, { useState } from "react";
 import Image from "./Image/Image";
 import CustomButton from "./CustomButton/CustomButton";
 import Paragraph from "./Paragraph/Paragraph";
