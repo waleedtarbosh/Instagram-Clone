@@ -14,12 +14,12 @@ export default function Login() {
   const ImageProps = {
     src: "/images/iphone-with-profile.jpg",
     alt: "iPhone with Instagram app",
-    imageWrapperStyle: "flex w-3/5",
+    imageWrapperStyle: "flex w-3/5"
   };
   const LogoProps = {
     src: "/images/logo.png",
     alt: "Instagram",
-    imageWrapperStyle: "mt-2 w-6/12 mb-4",
+    imageWrapperStyle: "mt-2 w-6/12 mb-4"
   };
   const inputFields = [
     {
@@ -30,7 +30,7 @@ export default function Login() {
       styleInput:
         "text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2",
       value: emailAddress,
-      onChange: (event) => setEmailAddress(event.target.value),
+      onChange: (event) => setEmailAddress(event.target.value)
     },
     {
       id: "password",
@@ -40,8 +40,8 @@ export default function Login() {
       styleInput:
         "text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2",
       value: password,
-      onChange: (event) => setPassword(event.target.value),
-    },
+      onChange: (event) => setPassword(event.target.value)
+    }
   ];
   const buttonProps = {
     disabled: isInvalid,
@@ -49,12 +49,12 @@ export default function Login() {
     styleButton: `bg-blue-medium text-white w-full rounded h-8 font-bold ${
       isInvalid && "opacity-50"
     }`,
-    content: "Login",
+    content: "Login"
   };
   const ParagraphProps = {
     text: "Don't have an account?",
     linkText: "Sign up",
-    textStyle: "text-sm",
+    textStyle: "text-sm"
   };
   const linkProps = {
     to: "/sign-up",
@@ -62,7 +62,7 @@ export default function Login() {
     type: "submit",
     styleButton: `bg-blue-medium text-white w-full rounded h-8 font-bold ${
       isInvalid && "opacity-50"
-    }`,
+    }`
   };
 
   const handleLogin = async (event) => {
