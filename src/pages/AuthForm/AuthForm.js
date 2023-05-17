@@ -51,7 +51,7 @@ export default function AuthForm({
             {inputFields.map((input) => (
               <CustomInput key={input.id} {...input} />
             ))}
-            <CustomButton {...buttonProps}>{formType}</CustomButton>
+            <CustomButton {...buttonProps}  disabled={isInvalid}>{formType}  </CustomButton>
           </form>
         </div>
         <div className="flex justify-center items-center flex-col w-full bg-white p-4 rounded border border-gray-primary">
