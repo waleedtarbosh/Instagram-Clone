@@ -3,7 +3,16 @@ import { useReducer } from "react";
 import Image from "../Login/Image/Image";
 import CustomButton from "../Login/CustomButton/CustomButton";
 import Paragraph from "../Login/Paragraph/Paragraph";
-
+const instagramAppImage = {
+  src: "/images/iphone-with-profile.jpg",
+  alt: "iPhone with Instagram app",
+  imageWrapperStyle: "flex w-3/5"
+};
+const logo = {
+  src: "/images/logo.png",
+  alt: "Instagram",
+  imageWrapperStyle: "mt-2 w-6/12 mb-4"
+};
 const initialState = {
   username: "",
   fullName: "",
@@ -35,8 +44,6 @@ export default function AuthForm({
   formType,
   handleSubmit,
   isInvalid,
-  imageProps,
-  logoProps,
   inputFields,
   buttonProps,
   paragraphProps,
@@ -66,11 +73,11 @@ export default function AuthForm({
 
   return (
     <div className="container flex mx-auto max-w-screen-md items-center h-screen">
-      <Image {...imageProps} />
+      <Image {...instagramAppImage} />
       <div className="flex flex-col w-2/5">
         <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
           <h1 className="flex justify-center w-full ">
-            <Image {...logoProps} />
+            <Image {...logo} />
           </h1>
           {state.error && (
             <p className="mb-4 text-xs text-red-primary">{state.error}</p>

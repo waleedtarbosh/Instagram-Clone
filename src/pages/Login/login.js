@@ -7,16 +7,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const isInvalid = password === "" || emailAddress === "";
 
-  const imageProps = {
-    src: "/images/iphone-with-profile.jpg",
-    alt: "iPhone with Instagram app",
-    imageWrapperStyle: "flex w-3/5"
-  };
-  const logoProps = {
-    src: "/images/logo.png",
-    alt: "Instagram",
-    imageWrapperStyle: "mt-2 w-6/12 mb-4"
-  };
+  
   const inputFields = [
     {
       id: "email",
@@ -72,8 +63,6 @@ export default function Login() {
       formType="Login"
       handleSubmit={handleLogin}
       isInvalid={isInvalid}
-      imageProps={imageProps}
-      logoProps={logoProps}
       inputFields={inputFields}
       buttonProps={buttonProps}
       paragraphProps={paragraphProps}
