@@ -5,7 +5,6 @@ import Loader from "../../Components/Loader/Loader";
 export default function Login() {
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const isInvalid = password === "" || emailAddress === "";
 
   const ImageProps = {
@@ -72,8 +71,6 @@ export default function Login() {
     <AuthForm
       formType="Login"
       handleSubmit={handleLogin}
-      error={error}
-      setError={setError}
       isInvalid={isInvalid}
       ImageProps={ImageProps}
       LogoProps={LogoProps}

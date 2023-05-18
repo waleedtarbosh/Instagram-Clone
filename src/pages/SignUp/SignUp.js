@@ -6,7 +6,6 @@ export default function SignUp() {
   const [fullName, setFullName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const isInvalid = password === "" || emailAddress === "";
   const ImageProps = {
     src: "/images/iphone-with-profile.jpg",
@@ -90,8 +89,6 @@ export default function SignUp() {
     <AuthForm
       formType="Sign Up"
       handleSubmit={handleSignUp}
-      error={error}
-      setError={setError}
       isInvalid={isInvalid}
       ImageProps={ImageProps}
       LogoProps={LogoProps}
