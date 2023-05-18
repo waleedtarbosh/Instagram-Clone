@@ -7,12 +7,12 @@ export default function SignUp() {
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const isInvalid = password === "" || emailAddress === "";
-  const ImageProps = {
+  const imageProps = {
     src: "/images/iphone-with-profile.jpg",
     alt: "iPhone with Instagram app",
     imageWrapperStyle: "flex w-3/5"
   };
-  const LogoProps = {
+  const logoProps = {
     src: "/images/logo.png",
     alt: "Instagram",
     imageWrapperStyle: "mt-2 w-6/12 mb-4"
@@ -67,7 +67,7 @@ export default function SignUp() {
     }`,
     content: "Sign Up"
   };
-  const ParagraphProps = {
+  const paragraphProps = {
     text: "Have an account?",
     linkText: "Login",
     textStyle: "text-sm"
@@ -90,11 +90,11 @@ export default function SignUp() {
       formType="Sign Up"
       handleSubmit={handleSignUp}
       isInvalid={isInvalid}
-      ImageProps={ImageProps}
-      LogoProps={LogoProps}
+      imageProps={imageProps}
+      logoProps={logoProps}
       inputFields={inputFields}
       buttonProps={buttonProps}
-      ParagraphProps={ParagraphProps}
+      paragraphProps={paragraphProps}
       linkProps={linkProps}
     />
   );

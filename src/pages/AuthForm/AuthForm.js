@@ -35,11 +35,11 @@ export default function AuthForm({
   formType,
   handleSubmit,
   isInvalid,
-  ImageProps,
-  LogoProps,
+  imageProps,
+  logoProps,
   inputFields,
   buttonProps,
-  ParagraphProps,
+  paragraphProps,
   linkProps,
 }) {
   const [state, dispatch] = useReducer(formReducer, initialState);
@@ -66,11 +66,11 @@ export default function AuthForm({
 
   return (
     <div className="container flex mx-auto max-w-screen-md items-center h-screen">
-      <Image {...ImageProps} />
+      <Image {...imageProps} />
       <div className="flex flex-col w-2/5">
         <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
           <h1 className="flex justify-center w-full ">
-            <Image {...LogoProps} />
+            <Image {...logoProps} />
           </h1>
           {state.error && (
             <p className="mb-4 text-xs text-red-primary">{state.error}</p>
@@ -90,7 +90,7 @@ export default function AuthForm({
           </form>
         </div>
         <div className="flex justify-center items-center flex-col w-full bg-white p-4 rounded border border-gray-primary">
-          <Paragraph {...ParagraphProps} linkProps={linkProps} />
+          <Paragraph {...paragraphProps} linkProps={linkProps} />
         </div>
       </div>
     </div>

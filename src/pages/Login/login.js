@@ -7,12 +7,12 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const isInvalid = password === "" || emailAddress === "";
 
-  const ImageProps = {
+  const imageProps = {
     src: "/images/iphone-with-profile.jpg",
     alt: "iPhone with Instagram app",
     imageWrapperStyle: "flex w-3/5"
   };
-  const LogoProps = {
+  const logoProps = {
     src: "/images/logo.png",
     alt: "Instagram",
     imageWrapperStyle: "mt-2 w-6/12 mb-4"
@@ -47,7 +47,7 @@ export default function Login() {
     }`,
     content: "Login"
   };
-  const ParagraphProps = {
+  const paragraphProps = {
     text: "Don't have an account?",
     linkText: "Sign up",
     textStyle: "text-sm"
@@ -72,11 +72,11 @@ export default function Login() {
       formType="Login"
       handleSubmit={handleLogin}
       isInvalid={isInvalid}
-      ImageProps={ImageProps}
-      LogoProps={LogoProps}
+      imageProps={imageProps}
+      logoProps={logoProps}
       inputFields={inputFields}
       buttonProps={buttonProps}
-      ParagraphProps={ParagraphProps}
+      paragraphProps={paragraphProps}
       linkProps={linkProps}
     />
     </>
