@@ -1,12 +1,34 @@
 import AuthForm from "../AuthForm/AuthForm";
 import { useState } from "react";
-import Loader from "../../Components/Loader/Loader";
 
-export default function Login() {
+export default function SignUp() {
+  const [username, setUsername] = useState("");
+  const [fullName, setFullName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const isInvalid = password === "" || emailAddress === "";
+
   const inputFields = [
+    {
+      id: "username",
+      label: "Username",
+      type: "text",
+      placeholder: "Enter your Username",
+      styleInput:
+        "text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2",
+      value: username,
+      onChange: (event) => setUsername(event.target.value)
+    },
+    {
+      id: "fullname",
+      label: "Full Name",
+      type: "text",
+      placeholder: "Enter your Full Name",
+      styleInput:
+        "text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2",
+      value: fullName,
+      onChange: (event) => setFullName(event.target.value)
+    },
     {
       id: "email",
       label: "Email address",
@@ -34,15 +56,15 @@ export default function Login() {
     styleButton: `bg-blue-medium text-white w-full rounded h-8 font-bold ${
       isInvalid && "opacity-50"
     }`,
-    content: "Login"
+    content: "Sign Up"
   };
   const paragraphProps = {
-    text: "Don't have an account?",
-    linkText: "Sign up",
+    text: "Have an account?",
+    linkText: "Login",
     textStyle: "text-sm"
   };
   const linkProps = {
-    to: "/sign-up",
+    to: "/login",
     className: "font-bold text-blue-medium",
     type: "submit",
     styleButton: `bg-blue-medium text-white w-full rounded h-8 font-bold ${
@@ -50,22 +72,19 @@ export default function Login() {
     }`
   };
 
-  const handleLogin = async (credentials) => {
-    // login logic here using credentials object
+  const handleSignUp = async (credentials) => {
+    // sign up logic here using credentials object
   };
 
   return (
-    <>
-    <Loader fadeOutInterval={5000} />
     <AuthForm
-      formType="Login"
-      handleSubmit={handleLogin}
+      formType="Sign Up"
+      handleSubmit={handleSignUp}
       isInvalid={isInvalid}
       inputFields={inputFields}
       buttonProps={buttonProps}
       paragraphProps={paragraphProps}
       linkProps={linkProps}
     />
-    </>
   );
 }
