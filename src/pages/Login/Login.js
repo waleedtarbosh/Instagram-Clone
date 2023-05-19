@@ -6,8 +6,6 @@ export default function Login() {
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const isInvalid = password === "" || emailAddress === "";
-
-  
   const inputFields = [
     {
       id: "email",
