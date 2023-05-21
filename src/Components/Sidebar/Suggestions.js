@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import SuggestedProfile from './Suggested-profile';
+import SuggestedProfile from './SuggestedProfile';
 
 export default function Suggestions() {
   const profiles = [
