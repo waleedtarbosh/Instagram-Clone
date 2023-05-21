@@ -19,7 +19,7 @@ const svgProps = {
   stroke: "currentColor",
 };
 
-const pathProps1 = {
+const homeIconProps = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
   strokeWidth: 2,
@@ -55,7 +55,7 @@ export default function Header() {
             <>
               <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
                 <SvgComponent {...svgProps}>
-                  <PathComponent {...pathProps1} />
+                  <PathComponent {...homeIconProps} />
                 </SvgComponent>
               </Link>
 
