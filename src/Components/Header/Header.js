@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import Image from "../../pages/Login/Image/Image";
-import SvgComponent from "./SvgComponent/SvgComponent";
-import PathComponent from "./PathComponent/PathComponent";
+import SvgPathComponent from "./SvgPathComponent/SvgPathComponent";
 
 const instagramLogo = {
   src: "/images/logo.png",
@@ -54,9 +53,10 @@ export default function Header() {
           <div className="text-gray-700 text-center flex items-center align-items">
             <>
               <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
-                <SvgComponent {...svgProps}>
-                  <PathComponent {...homeIconProps} />
-                </SvgComponent>
+                <SvgPathComponent
+                  svgProps={svgProps}
+                  pathProps={homeIconProps}
+                />
               </Link>
               <button
                 type="button"
@@ -70,9 +70,10 @@ export default function Header() {
                   }
                 }}
               >
-                <SvgComponent {...svgProps}>
-                  <PathComponent {...logoutIconProps} />
-                </SvgComponent>
+                <SvgPathComponent
+                  svgProps={svgProps}
+                  pathProps={logoutIconProps}
+                />
               </button>
               <div className="flex items-center cursor-pointer">
                 <Link to={`/p/karl`}>
