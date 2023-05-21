@@ -1,9 +1,7 @@
 import React from 'react';
 
 const Image = ({ src, alt , imageWrapperStyle, imageStyle }) => {
-  const doesImageStyleExist = () => {
-    return imageStyle;
-  };
+  const doesImageStyleExist = () => imageStyle;
 
   return (
     <div  className={`${imageWrapperStyle}`}>
