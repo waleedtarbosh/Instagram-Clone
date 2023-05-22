@@ -7,22 +7,23 @@ import Bio from "./Bio/Bio";
 import Header from "../../Components/Header/Header";
 const Profile = () => {
   const followerCount = 1;
+
   const profileImageProps = {
     src: "/images/avatars/karl.jpg",
     alt: "karl profile picture",
     imageWrapperStyle: "h-40 w-40",
-    imageStyle: "rounded-full",
+    imageStyle: "rounded-full"
   };
 
   const dataProfile = [
     { id: "photos", label: "photos", value: 0 },
     { id: "followers", label: "followers", value: followerCount },
-    { id: "following", label: "following", value: 2 },
+    { id: "following", label: "following", value: 2 }
   ];
 
   return (
     <>
-     <Header />
+      <Header />
       <div className="container mx-auto max-w-screen-lg mt-12 mr-10">
         <div className="grid grid-cols-3 gap-4 justify-between">
           <div className="col-span-1 flex justify-center items-center">
