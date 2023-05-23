@@ -7,7 +7,7 @@ const Photos = ({ photos }) => {
       <div className="h-16 border-t border-gray-primary mt-12 pt-4">
         <div className="grid grid-cols-3 gap-2">
           {photos.map((photo) => (
-            <div key={photo.id} className="relative">
+            <div key={photo.id} className="relative mr-6 mb-5">
               <img
                 src={photo.src}
                 alt={photo.alt}
