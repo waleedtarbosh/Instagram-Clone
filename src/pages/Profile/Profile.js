@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "../Login/Image/Image";
-import Photos from "../Profile/Photos";
+import Photos from "./Photos";
 import UserName from "../Profile/UserName/UserName";
 import Count from "../Profile/Count/Count";
 import Bio from "../Profile/Bio/Bio";
