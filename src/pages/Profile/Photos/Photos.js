@@ -44,15 +44,13 @@ const Photos = ({ photos }) => {
                         svgProps={svgProps}
                         pathProps={heartIconProps}
                       />
-                      {Math.floor(Math.random() * 20)}
                     </p>
 
                     <p className="flex items-center text-white font-bold">
                       <SvgPathIconsComponent
                         svgProps={svgProps}
                         pathProps={commentIconProps}
-                      />
-                      {Math.floor(Math.random() * 20)}
+                      />                      
                     </p>
                   </div>
                 </div>
