@@ -4,7 +4,6 @@ import Photos from "./Photos/Photos";
 import UserName from "../Profile/UserName/UserName";
 import Count from "../Profile/Count/Count";
 import Bio from "../Profile/Bio/Bio";
-import Header from "../../Components/Header/Header";
 
 const Profile = ({
   profileImageProps,
@@ -18,7 +17,6 @@ const Profile = ({
 }) => {
   return (
     <>
-      <Header />
       <div className="container mx-auto max-w-screen-lg mt-12 mr-10">
         <div className="grid grid-cols-3 gap-4 justify-between">
           <div className="col-span-1 flex justify-center items-center">
