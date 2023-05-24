@@ -1,51 +1,57 @@
 import React from "react";
 import styles from "./Photos.module.css";
+import SvgPathIconsComponent from "./SvgPathIconsComponent/SvgPathIconsComponent";
+import Image from "../../Login/Image/Image";
 
 const Photos = ({ photos }) => {
+  const svgProps = {
+    className: "w-8 mr-2",
+    xmlns: "http://www.w3.org/2000/svg",
+    fill: "currentColor",
+    viewBox: "0 0 20 20",
+    stroke: "",
+  };
+
+  const heartIconProps = {
+    fillRule: "evenodd",
+    d: "M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z",
+    clipRule: "evenodd",
+  };
+
+  const commentIconProps = {
+    fillRule: "evenodd",
+    d: "M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z",
+    clipRule: "evenodd",
+  };
+
+  const photosProfile = {
+    imageWrapperStyle: "",
+    imageStyle: "w-full h-full object-cover",
+  };
+
   if (photos?.length > 0) {
     return (
       <div className="h-16 border-t border-gray-primary mt-12 pt-4">
         <div className="grid grid-cols-3 gap-2">
           {photos.map((photo) => (
             <div key={photo.id} className="relative mr-6 mb-5">
-              <img
-                src={photo.src}
-                alt={photo.alt}
-                className="w-full h-full object-cover"
-                style={photo.style}
-              />
-              <div className="absolute bottom-0 left-0 bg-gray-200 z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex  ">
-                <div className="flex justify-center items-center ">
+              <Image src={photo.src} alt={photo.alt} {...photosProfile} />
+              <div className="absolute bottom-0 left-0 bg-gray-200 z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex">
+                <div className="flex justify-center items-center">
                   <div className={styles["icons"]}>
-                    <p className="flex items-center text-white font-bold ">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        className="w-8 mr-2"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
+                    <p className="flex items-center text-white font-bold">
+                      <SvgPathIconsComponent
+                        svgProps={svgProps}
+                        pathProps={heartIconProps}
+                      />
                       {Math.floor(Math.random() * 20)}
                     </p>
 
-                    <p className="flex items-center text-white font-bold ">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        className="w-8 mr-2"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
+                    <p className="flex items-center text-white font-bold">
+                      <SvgPathIconsComponent
+                        svgProps={svgProps}
+                        pathProps={commentIconProps}
+                      />
                       {Math.floor(Math.random() * 20)}
                     </p>
                   </div>
