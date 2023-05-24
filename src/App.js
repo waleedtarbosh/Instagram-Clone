@@ -10,6 +10,7 @@ const SignUp = lazy(() => import('./pages/SignUp/SignUp'));
 const Dashboard = lazy(() => import('./pages/Dashboard/Dashboard'));
 const MyProfile = lazy(() => import('./pages/MyProfile/MyProfile'));
 const FriendsProfile = lazy(() => import('./pages/FriendsProfile/FriendsProfile'));
+
 function App() {
   return (
     <div>
