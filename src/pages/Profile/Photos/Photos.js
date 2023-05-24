@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Photos.module.css";
 
 const Photos = ({ photos }) => {
-  if (photos && photos.length > 0) {
+  if (photos?.length > 0) {
     return (
       <div className="h-16 border-t border-gray-primary mt-12 pt-4">
         <div className="grid grid-cols-3 gap-2">
