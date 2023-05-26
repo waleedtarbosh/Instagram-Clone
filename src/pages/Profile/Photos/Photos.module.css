@@ -1,0 +1,18 @@
+.icons {
+    display: flex;
+    margin-top: 220px;
+  }
+  
+  /* Media query for iPad */
+  @media (max-width: 1024px) {
+    .icons {
+      margin-top: 180px;
+    }
+  }
+  
+  /* Media query for phones */
+  @media (max-width: 480px) {
+    .icons {
+      margin-top: 80px;
+    }
+  }

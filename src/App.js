@@ -1,23 +1,26 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy } from "react";
-import { LOGIN } from "./constants/routes"; 
-import { SIGN_UP } from "./constants/routes"; 
-import { PROFILE } from "./constants/routes";
+import * as ROUTES from './constants/routes'
+import Layout from "./Components/Layout/Layout";
 const Login = lazy(() => import("./pages/Login/Login"));
 const SignUp = lazy(() => import('./pages/SignUp/SignUp'));
 const Dashboard = lazy(() => import('./pages/Dashboard/Dashboard'));
-const Profile = lazy(() => import('./pages/Profile/Profile'));
+const MyProfile = lazy(() => import('./pages/MyProfile/MyProfile'));
+const FriendsProfile = lazy(() => import('./pages/FriendsProfile/FriendsProfile'));
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route index element={<Dashboard />} />
-          <Route path={LOGIN} element={<Login />} />
-          <Route path={SIGN_UP} element={<SignUp />} />
-          <Route path={PROFILE} element={<Profile />} />
+        <Route path={ROUTES.LOGIN} element={<Login />} />
+        <Route path={ROUTES.SIGN_UP} element={<SignUp />} />
+        <Route element={<Layout />}>
+            <Route index element={<Dashboard />} />
+            <Route path={ROUTES.PROFILE} element={<MyProfile />} />
+            <Route path={ROUTES.FRIENDS_PROFILE} element={<FriendsProfile/>} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>
