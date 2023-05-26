@@ -30,11 +30,6 @@ const Profile = ({
                   className="bg-blue-medium font-bold text-sm rounded text-white w-20 h-8"
                   type="button"
                   onClick={handleToggleFollow}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter") {
-                      handleToggleFollow();
-                    }
-                  }}
                 >
                   {isFollowingProfile ? "Unfollow" : "Follow"}
                 </button>
