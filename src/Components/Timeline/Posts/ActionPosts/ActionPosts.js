@@ -77,7 +77,7 @@ export default function ActionPosts({ totalLikes, likedPhoto, handleFocus }) {
 }
 
 ActionPosts.propTypes = {
-  docId: PropTypes.string.isRequired,
+  docId: PropTypes.string,
   totalLikes: PropTypes.number.isRequired,
   likedPhoto: PropTypes.bool.isRequired,
   handleFocus: PropTypes.func.isRequired,

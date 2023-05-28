@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { formatDistance } from 'date-fns';
 import { Link } from 'react-router-dom';
 import AddComment from '../AddComment/AddComment';
 
-export default function Comments({ docId, comments: allComments, posted, commentInput }) { 
+const Comments = forwardRef(({ docId, comments: allComments, posted }, ref) => {
   const defaultCommentsVisible = 3;
   const [comments, setComments] = useState(allComments);
   const [commentsSlice, setCommentsSlice] = useState(defaultCommentsVisible);
@@ -13,7 +13,7 @@ export default function Comments({ docId, comments: allComments, posted, comment
   return (
     <>
       <div className="p-4 pt-1 pb-4">
-      {comments.slice(0, commentsSlice).map((item) => (
+        {comments.slice(0, commentsSlice).map((item) => (
           <p key={`${item.comment}-${item.username}`} className="mb-1">
             <Link to={`/`}>
               <span className="mr-1 font-bold">{item.username}</span>
@@ -43,15 +43,16 @@ export default function Comments({ docId, comments: allComments, posted, comment
         docId={docId}
         comments={comments}
         setComments={setComments}
-        commentInput={commentInput}
+        commentInput={ref}
       />
     </>
   );
-}
+});
 
 Comments.propTypes = {
-  docId: PropTypes.string.isRequired,
+  docId: PropTypes.string,
   comments: PropTypes.array.isRequired,
   posted: PropTypes.number.isRequired,
-  commentInput: PropTypes.object.isRequired,
 };
+
+export default Comments;

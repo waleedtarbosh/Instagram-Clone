@@ -25,7 +25,7 @@ const Posts = ({ content }) => {
         docId={content.docId}
         comments={content.comments}
         posted={content.dateCreated}
-        commentInput={commentInput}
+        ref={commentInput}
       />
     </div>
   );

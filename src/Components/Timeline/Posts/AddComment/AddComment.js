@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-export default function AddComment({ docId, comments, setComments, commentInput, displayName }) {
+export default function AddComment({ docId, comments, setComments, commentInput }) {
   const [comment, setComment] = useState('');
 
   const handleSubmitComment = (event) => {
     event.preventDefault();
 
-    setComments([...comments, { displayName, comment }]);
+    setComments([...comments, { comment }]);
     setComment('');
   };
 
@@ -45,9 +45,8 @@ export default function AddComment({ docId, comments, setComments, commentInput,
 }
 
 AddComment.propTypes = {
-  docId: PropTypes.string.isRequired,
+  docId: PropTypes.string,
   comments: PropTypes.array.isRequired,
   setComments: PropTypes.func.isRequired,
   commentInput: PropTypes.object,
-  displayName: PropTypes.string.isRequired,
 };
