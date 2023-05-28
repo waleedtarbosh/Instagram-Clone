@@ -7,7 +7,6 @@ export default function AddComment({ docId, comments, setComments, commentInput,
   const handleSubmitComment = (event) => {
     event.preventDefault();
 
-    // Use the displayName prop when adding a new comment
     setComments([...comments, { displayName, comment }]);
     setComment('');
   };
