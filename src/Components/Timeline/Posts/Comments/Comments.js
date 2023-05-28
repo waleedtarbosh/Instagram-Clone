@@ -8,9 +8,7 @@ export default function Comments({ docId, comments: allComments, posted, comment
   const [comments, setComments] = useState(allComments);
   const [commentsSlice, setCommentsSlice] = useState(3);
 
-  const showNextComments = () => {
-    setCommentsSlice(commentsSlice + 3);
-  };
+  const showNextComments = () => setCommentsSlice(commentsSlice + 3);
 
   return (
     <>
