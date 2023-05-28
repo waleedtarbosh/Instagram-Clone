@@ -7,9 +7,7 @@ import FooterPosts from './FooterPosts/FooterPosts';
 import Comments from './Comments/Comments';
 
 const Posts = ({ content }) => {
-  const handleFocus = () => {
-    commentInput.current.focus();
-  };
+  const handleFocus = () => commentInput.current.focus();
 
   const commentInput = useRef(null);
 
