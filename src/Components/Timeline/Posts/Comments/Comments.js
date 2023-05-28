@@ -4,11 +4,11 @@ import { formatDistance } from 'date-fns';
 import { Link } from 'react-router-dom';
 import AddComment from '../AddComment/AddComment';
 
-export default function Comments({ docId, comments: allComments, posted, commentInput }) {
+export default function Comments({ docId, comments: allComments, posted, commentInput }) { 
+  const defaultCommentsVisible = 3;
   const [comments, setComments] = useState(allComments);
-  const [commentsSlice, setCommentsSlice] = useState(3);
-
-  const showNextComments = () => setCommentsSlice(commentsSlice + 3);
+  const [commentsSlice, setCommentsSlice] = useState(defaultCommentsVisible);
+  const showNextComments = () => setCommentsSlice(commentsSlice + defaultCommentsVisible);
 
   return (
     <>
@@ -21,7 +21,7 @@ export default function Comments({ docId, comments: allComments, posted, comment
             <span>{item.comment}</span>
           </p>
         ))}
-        {comments.length >= 3 && commentsSlice < comments.length && (
+        {comments.length >= defaultCommentsVisible && commentsSlice < comments.length && (
           <button
             className="text-sm text-gray-base mb-1 cursor-pointer focus:outline-none"
             type="button"
