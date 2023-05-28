@@ -87,7 +87,7 @@ export default function Timeline() {
 
   const posts = photos.map(photo => {
     const commentObj = commentsByPhotoId.find(obj => obj.photoId === photo.id);
-    const comments = commentObj ? commentObj.comments : [];
+    const comments = commentObj?.comments || [];
 
     return {
       id: photo.id,
