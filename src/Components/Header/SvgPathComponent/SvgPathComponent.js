@@ -1,11 +1,18 @@
-import React from "react";
-import SvgComponent from "../SvgComponent/SvgComponent";
-import PathComponent from "../PathComponent/PathComponent";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function SvgPathComponent({ svgProps, pathProps }) {
+const SvgPathComponent = ({ svgProps, pathProps, onClick }) => {
   return (
-    <SvgComponent {...svgProps}>
-      <PathComponent {...pathProps} />
-    </SvgComponent>
+    <svg {...svgProps} onClick={onClick}>
+      <path {...pathProps} />
+    </svg>
   );
-}
+};
+
+SvgPathComponent.propTypes = {
+  svgProps: PropTypes.object.isRequired,
+  pathProps: PropTypes.object.isRequired,
+  onClick: PropTypes.func,
+};
+
+export default SvgPathComponent;
