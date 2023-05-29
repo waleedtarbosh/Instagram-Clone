@@ -8,7 +8,7 @@ const SignUp = lazy(() => import('./pages/SignUp/SignUp'));
 const Dashboard = lazy(() => import('./pages/Dashboard/Dashboard'));
 const MyProfile = lazy(() => import('./pages/MyProfile/MyProfile'));
 const FriendsProfile = lazy(() => import('./pages/FriendsProfile/FriendsProfile'));
-
+const Settings = lazy(() => import('./pages/Settings/Settings'));
 function App() {
   return (
     <div>
@@ -16,6 +16,7 @@ function App() {
         <Routes>
         <Route path={ROUTES.LOGIN} element={<Login />} />
         <Route path={ROUTES.SIGN_UP} element={<SignUp />} />
+        <Route path={ROUTES.SETTINGS} element={<Settings />} />
         <Route element={<Layout />}>
             <Route index element={<Dashboard />} />
             <Route path={ROUTES.PROFILE} element={<MyProfile />} />
