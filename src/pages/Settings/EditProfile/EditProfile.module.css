@@ -45,7 +45,7 @@
     width: 80%;
   }
   
-  button {
+  .save-button {
     padding: 10px 20px;
     background-color: #3897f0;
     color: #fff;
@@ -60,7 +60,7 @@
     left: 675px;
     top: 677px;
   }
-  button:hover {
+  .save-button:hover {
     background-color: #357ae8;
   }
   

@@ -10,7 +10,7 @@ const User = () => {
   };
 
   return (
-    <Link to={`/`} className="grid grid-cols-4 gap-4 mb-6 items-center">
+    <Link to={`/profile`} className="grid grid-cols-4 gap-4 mb-6 items-center">
       <div className="flex items-center justify-between col-span-1">
         <Image {...ProfileImageProps}></Image>
       </div>
