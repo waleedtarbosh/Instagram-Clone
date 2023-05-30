@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Image from '../../../../pages/Login/Image/Image';
 import PropTypes from 'prop-types';
+import * as ROUTES from "../../../../constants/routes";
 
 const profileImageProps = {
   src: '/images/avatars/raphael.jpg',
@@ -14,7 +15,7 @@ const HeaderPosts = ({ username }) => {
   return (
     <div className="flex border-b border-gray-primary h-4 p-4 py-8">
       <div className="flex items-center">
-        <Link to={`/`} className="flex items-center">
+        <Link to={ROUTES.FRIENDS_PROFILE} className="flex items-center">
           <Image {...profileImageProps} />
           <p className="font-bold">{username}</p>
         </Link>
