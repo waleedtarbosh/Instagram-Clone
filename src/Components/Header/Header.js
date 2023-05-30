@@ -4,6 +4,7 @@ import * as ROUTES from "../../constants/routes";
 import Image from "../../pages/Login/Image/Image";
 import SvgPathComponent from "./SvgPathComponent/SvgPathComponent";
 import { useNavigate } from "react-router-dom";
+
 const instagramLogo = {
   src: "/images/logo.png",
   alt: "Instagram",
@@ -36,6 +37,11 @@ const logoutIconProps = {
   clipRule: "",
 };
 
+const links = [
+  { id: 1, to: "/profile", label: "Profile" },
+  { id: 2, to: "/settings", label: "Settings" },
+];
+
 export default function Header() {
   let navigate = useNavigate();
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -43,6 +49,7 @@ export default function Header() {
   const handleImageClick = () => {
     setIsDropdownVisible(!isDropdownVisible);
   };
+
   return (
     <header className="h-16 bg-white border-b border-gray-primary mb-8">
       <div className="container mx-auto max-w-screen-lg h-full">
@@ -88,8 +95,9 @@ export default function Header() {
                 />
                 {isDropdownVisible && (
                   <div className="dropdown-content absolute mt-6 flex flex-col">
-                    <Link to={`/profile`}>Profile</Link>
-                    <Link to={`/settings`}>Settings</Link>
+                    {links.map((link) => (
+                      <Link key={link.id} to={link.to}>{link.label}</Link>
+                    ))}
                   </div>
                 )}
               </div>
