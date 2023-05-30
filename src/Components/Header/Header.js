@@ -96,7 +96,15 @@ export default function Header() {
                 {isDropdownVisible && (
                   <div className="dropdown-content absolute mt-6 flex flex-col">
                     {links.map((link) => (
-                      <Link key={link.id} to={link.to}>{link.label}</Link>
+                      <button
+                        key={link.id}
+                        onClick={() => {
+                          navigate(link.to);
+                        }}
+                        className="text-black-light"
+                      >
+                        {link.label}
+                      </button>
                     ))}
                   </div>
                 )}
