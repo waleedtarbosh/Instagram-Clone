@@ -1,11 +1,18 @@
 import AuthForm from "../AuthForm/AuthForm";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Loader from "../../Components/Loader/Loader";
+import { useNavigate } from 'react-router-dom';
+import FirebaseContext from '../../context/firebase';
+import * as ROUTES from '../../constants/routes';
 
 export default function Login() {
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const isInvalid = password === "" || emailAddress === "";
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const { firebase } = useContext(FirebaseContext);
+
   const inputFields = [
     {
       id: "email",
@@ -28,6 +35,7 @@ export default function Login() {
       onChange: (event) => setPassword(event.target.value)
     }
   ];
+
   const buttonProps = {
     disabled: isInvalid,
     type: "submit",
@@ -36,11 +44,13 @@ export default function Login() {
     }`,
     content: "Login"
   };
+
   const paragraphProps = {
     text: "Don't have an account?",
     linkText: "Sign up",
     textStyle: "text-sm"
   };
+
   const linkProps = {
     to: "/sign-up",
     className: "font-bold text-blue-medium",
@@ -50,22 +60,34 @@ export default function Login() {
     }`
   };
 
-  const handleLogin = async (credentials) => {
-    // login logic here using credentials object
+  const handleLogin = async (event) => {
+    try {
+      if (event && event.preventDefault) {
+        event.preventDefault();
+      }
+  
+      await firebase.auth().signInWithEmailAndPassword(emailAddress, password);
+      navigate(ROUTES.DASHBOARD);
+    } catch (error) {
+      setEmailAddress('');
+      setPassword('');
+      setError(error.message);
+    }
   };
 
   return (
     <>
-    <Loader fadeOutInterval={5000} />
-    <AuthForm
-      formType="Login"
-      handleSubmit={handleLogin}
-      isInvalid={isInvalid}
-      inputFields={inputFields}
-      buttonProps={buttonProps}
-      paragraphProps={paragraphProps}
-      linkProps={linkProps}
-    />
+      <Loader fadeOutInterval={5000} />
+      <AuthForm
+        formType="Login"
+        handleSubmit={handleLogin}
+        isInvalid={isInvalid}
+        inputFields={inputFields}
+        buttonProps={buttonProps}
+        paragraphProps={paragraphProps}
+        linkProps={linkProps}
+        error={error} // Pass the error to AuthForm
+      />
     </>
   );
 }
