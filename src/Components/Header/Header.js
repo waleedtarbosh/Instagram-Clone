@@ -38,8 +38,8 @@ const logoutIconProps = {
 };
 
 const links = [
-  { id: 1, to: "/profile", label: "Profile" },
-  { id: 2, to: "/settings", label: "Settings" },
+  { id: 1, to: ROUTES.PROFILE, label: "Profile" },
+  { id: 2, to: ROUTES.SETTINGS, label: "Settings" },
 ];
 
 export default function Header() {
