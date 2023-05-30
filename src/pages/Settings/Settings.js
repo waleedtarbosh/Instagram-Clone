@@ -5,9 +5,8 @@ import EditProfile from "./EditProfile/EditProfile";
 const Settings = () => {
   return (
     <div className={styles["settings-card"]}>
-      <SidebarSettings></SidebarSettings>
-
-      <EditProfile></EditProfile>
+      <SidebarSettings/>
+      <EditProfile/>
     </div>
   );
 };
