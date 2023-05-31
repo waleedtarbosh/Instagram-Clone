@@ -48,6 +48,7 @@ export default function AuthForm({
   buttonProps,
   paragraphProps,
   linkProps,
+  error, // Optional: Error message to display
 }) {
   const [state, dispatch] = useReducer(formReducer, initialState);
 
@@ -79,8 +80,8 @@ export default function AuthForm({
           <h1 className="flex justify-center w-full ">
             <Image {...logo} />
           </h1>
-          {state.error && (
-            <p className="mb-4 text-xs text-red-primary">{state.error}</p>
+          {error && (
+            <p className="mb-4 text-xs text-red-primary">{error}</p>
           )}
           <form onSubmit={handleAuth} method="POST">
             {inputFields.map((input) => (

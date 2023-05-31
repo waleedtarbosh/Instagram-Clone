@@ -1,5 +1,8 @@
 import AuthForm from "../AuthForm/AuthForm";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from 'react-router-dom';
+import FirebaseContext from '../../context/firebase';
+import * as ROUTES from '../../constants/routes';
 
 export default function SignUp() {
   const [username, setUsername] = useState("");
@@ -7,6 +10,9 @@ export default function SignUp() {
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const isInvalid = password === "" || emailAddress === "";
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const { firebase } = useContext(FirebaseContext);
 
   const inputFields = [
     {
@@ -50,6 +56,7 @@ export default function SignUp() {
       onChange: (event) => setPassword(event.target.value)
     }
   ];
+
   const buttonProps = {
     disabled: isInvalid,
     type: "submit",
@@ -58,11 +65,13 @@ export default function SignUp() {
     }`,
     content: "Sign Up"
   };
+
   const paragraphProps = {
     text: "Have an account?",
     linkText: "Login",
     textStyle: "text-sm"
   };
+
   const linkProps = {
     to: "/login",
     className: "font-bold text-blue-medium",
@@ -72,8 +81,48 @@ export default function SignUp() {
     }`
   };
 
-  const handleSignUp = async (credentials) => {
-    // sign up logic here using credentials object
+  const handleSignUp = async (event) => {
+  
+    try {
+      const existingUser = await firebase
+        .firestore()
+        .collection('users')
+        .where('username', '==', username.toLowerCase())
+        .get();
+  
+      if (existingUser.empty) {
+        const createdUserResult = await firebase
+          .auth()
+          .createUserWithEmailAndPassword(emailAddress, password);
+  
+        await createdUserResult.user.updateProfile({
+          displayName: username
+        });
+  
+        await firebase
+          .firestore()
+          .collection('users')
+          .add({
+            userId: createdUserResult.user.uid,
+            username: username.toLowerCase(),
+            fullName,
+            emailAddress: emailAddress.toLowerCase(),
+            following: ['2'],
+            followers: [],
+            dateCreated: Date.now()
+          });
+  
+        navigate(ROUTES.DASHBOARD);
+      } else {
+        setUsername('');
+        setError('That username is already taken, please try another.');
+      }
+    } catch (error) {
+      setFullName('');
+      setEmailAddress('');
+      setPassword('');
+      setError(error.message);
+    }
   };
 
   return (
@@ -85,6 +134,7 @@ export default function SignUp() {
       buttonProps={buttonProps}
       paragraphProps={paragraphProps}
       linkProps={linkProps}
+      error={error}
     />
   );
 }
