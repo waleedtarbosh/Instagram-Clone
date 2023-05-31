@@ -82,11 +82,6 @@ export default function Header() {
                     firebase.auth().signOut();
                     navigate("/login");
                   }}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter") {
-                      firebase.auth().signOut();
-                    }
-                  }}
                 >
                   <SvgPathComponent
                     svgProps={svgProps}
