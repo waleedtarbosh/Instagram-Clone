@@ -4,6 +4,9 @@ import * as ROUTES from "../../constants/routes";
 import Image from "../../pages/Login/Image/Image";
 import SvgPathComponent from "./SvgPathComponent/SvgPathComponent";
 import { useNavigate } from "react-router-dom";
+import FirebaseContext from "../../context/firebase";
+import { useContext } from "react";
+import UserContext from "../../context/user";
 
 const instagramLogo = {
   src: "/images/logo.png",
@@ -43,6 +46,8 @@ const links = [
 ];
 
 export default function Header() {
+  const { user } = useContext(UserContext);
+  const { firebase } = useContext(FirebaseContext);
   let navigate = useNavigate();
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
@@ -62,54 +67,59 @@ export default function Header() {
             </h1>
           </div>
           <div className="text-gray-700 text-center flex items-center align-items">
-            <>
-              <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
-                <SvgPathComponent
-                  svgProps={svgProps}
-                  pathProps={homeIconProps}
-                />
-              </Link>
-              <button
-                type="button"
-                title="Sign Out"
-                onClick={() => {
-                  navigate("/login");
-                }}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") {
-                    // Handle sign out logic here
-                  }
-                }}
-              >
-                <SvgPathComponent
-                  svgProps={svgProps}
-                  pathProps={logoutIconProps}
-                />
-              </button>
-              <div className="flex flex-col items-center cursor-pointer">
-                <img
-                  src="/images/avatars/karl.jpg"
-                  alt="Profile"
-                  className="rounded-full h-8 w-8 flex"
-                  onClick={handleImageClick}
-                />
-                {isDropdownVisible && (
-                  <div className="dropdown-content absolute mt-6 flex flex-col">
-                    {links.map((link) => (
-                      <button
-                        key={link.id}
-                        onClick={() => {
-                          navigate(link.to);
-                        }}
-                        className="text-black-light"
-                      >
-                        {link.label}
-                      </button>
-                    ))}
+            {user ? (
+              <>
+                <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
+                  <SvgPathComponent
+                    svgProps={svgProps}
+                    pathProps={homeIconProps}
+                  />
+                </Link>
+                <button
+                  type="button"
+                  title="Sign Out"
+                  onClick={() => {
+                    firebase.auth().signOut();
+                    navigate("/login");
+                  }}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter") {
+                      firebase.auth().signOut();
+                    }
+                  }}
+                >
+                  <SvgPathComponent
+                    svgProps={svgProps}
+                    pathProps={logoutIconProps}
+                  />
+                </button>
+                {user && (
+                  <div className="flex flex-col items-center cursor-pointer">
+                    <img
+                      src={`/images/avatars/${user.displayName}.jpg`}
+                      alt="Profile"
+                      className="rounded-full h-8 w-8 flex"
+                      onClick={handleImageClick}
+                    />
+                    {isDropdownVisible && (
+                      <div className="dropdown-content absolute mt-6 flex flex-col">
+                        {links.map((link) => (
+                          <button
+                            key={link.id}
+                            onClick={() => {
+                              navigate(link.to);
+                            }}
+                            className="text-black-light"
+                          >
+                            {link.label}
+                          </button>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
-              </div>
-            </>
+              </>
+            ) : null}
           </div>
         </div>
       </div>
