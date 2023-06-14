@@ -11,13 +11,19 @@ export default function Sidebar() {
       console.log('fullName:', user.fullName);
       console.log('username:', user.username);
       console.log('userId:', user.userId);
+      console.log('following:', user.following);
+      console.log('docId:', user.docId);
     }
   }, [user]);
 
   return (
     <div className="p-4">
-      {user && <User fullName={user.fullName} username={user.username} />}
-      <Suggestions />
+      {user && (
+        <>
+          <User fullName={user.fullName} username={user.username} />
+          <Suggestions userId={user.userId} following={user.following} loggedInUserDocId={user.docId}/>
+        </>
+      )}
     </div>
   );
 }
