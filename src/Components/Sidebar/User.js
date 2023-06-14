@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import Image from "../../pages/Login/Image/Image";
 import * as ROUTES from "../../constants/routes";
 
-const User = () => {
+const User = ({ fullName, username }) => {
   const ProfileImageProps = {
-    src: "/images/avatars/karl.jpg",
+    src: `/images/avatars/${username}.jpg`,
     alt: "img profile",
     imageWrapperStyle: "w-16 flex mr-3",
     imageStyle: "rounded-full",
@@ -17,8 +17,8 @@ const User = () => {
         <Image {...ProfileImageProps}></Image>
       </div>
       <div className="col-span-3">
-        <p className="font-bold text-sm">karl</p>
-        <p className="text-sm">karl Hadwen</p>
+        <p className="font-bold text-sm">{username}</p>
+        <p className="text-sm">{fullName}</p>
       </div>
     </Link>
   );
